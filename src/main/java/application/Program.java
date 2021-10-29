@@ -8,15 +8,14 @@ import dominio.Pessoa;
 
 public class Program {
 	public static void main(String[] args) {
-		
-		
+
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();
-		
-		  Pessoa p4 = new Pessoa(null, "viktor Lima", "viktor@gmail.com");
-		  
-		  em.getTransaction().begin(); em.persist(p4); em.getTransaction().commit();
-		 		
+
+		Pessoa p = em.find(Pessoa.class, 4);
+
+		System.out.println(p);
+
 		System.out.println("PRONTO");
 		em.close();
 		emf.close();
